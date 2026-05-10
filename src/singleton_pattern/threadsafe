@@ -1,0 +1,8 @@
+Here we have synchronised the getInstance() method i.e. only one thread can execute this method at a
+time rest will have to wait in this way only one instance is created but this has a major problem .
+Suppose in getInstance() method along with the creation of object some heavy processing is also involved
+which is to processed by each thread so making getInstance() method synchronised restricts other threads
+from executing other tasks in this method and this makes the code inefficeint .
+To resolve this issue we use Double Checked Locking Pattern or Singleton Thread Safe Block .
+
+

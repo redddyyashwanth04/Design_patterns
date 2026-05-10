@@ -1,0 +1,22 @@
+Suppose you want to create a class for which only a single instance (or object) should be
+ created and that single object can be used by all other classes. So , here we can use Singleton
+ Design Pattern . So we can say that when only one object is to be created and
+shared among different classes then we use Singleton Design Pattern.
+
+
+The Lifecycle of Eager Initialization
+Class Loading: When the JVM first encounters the SingletonEager class (usually when you reference it in Main), it loads the bytecode.
+
+Static Initialization: During loading, the JVM allocates memory for all static variables. It executes new SingletonEager(), which calls the constructor and prints your "object created" message.
+
+Memory Residency: That single object now sits in the Metaspace/Heap for the remainder of the program's life.
+
+The Method Call: When you call getInstance(), you aren't "getting a new object"; you are simply getting a pointer (reference) to that one object that was created in Step 2.
+
+Thread Safety: This is "automatically" thread-safe. Java guarantees that static initializers are handled correctly even if multiple threads try to access the class at the exact same time.
+
+Performance: getInstance() is lightning fast because it just returns a reference; it never has to perform a check like if (instance == null).
+
+The "Eager" Downside: If this class is very "heavy" (uses lots of memory or connects to a database) and you don't end up actually using it, you’ve wasted resources because it created itself the moment the class was loaded.
+
+So when we called the fun() method in Main class then also the object of SingletonEager is created and this is wrong as only ` getInstance()method is supposed to do this . So clearly we can say that the drawback to eager initialization is that the object is created even though the client application might not be using it.

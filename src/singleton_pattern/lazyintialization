@@ -1,0 +1,13 @@
+Lazy initialization is a technique used to delay the creation of an object until it is first requested.
+
+The use of lazy initialization in this example ensures that the SingletonLazy instance is
+ created only when it is first requested, rather than at the time of class loading.
+ This approach can be more memory-efficient and can avoid potential initialization errors,
+ compared to the Eager initialization approach. However, the Lazy initialization approach is
+ not thread-safe and can result in the creation of multiple SingletonLazy instances if
+ multiple threads attempt to access the getInstance() method simultaneously.
+
+ we have two threads t1 and t2 both are executing getInstance() method now thread t1 sees the if
+ statement and enters in if block now t1 context switch with t2 now t2 executes the same code now t2
+ context switch with t1 (in if block) now singletonLazy=new SingletonLazy() is executed two times hence
+ creating two instances of class
